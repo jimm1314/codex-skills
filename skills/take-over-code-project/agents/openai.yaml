@@ -1,0 +1,4 @@
+interface:
+  display_name: "项目接管与上下文恢复"
+  short_description: "首次接管项目或从 CODEX_HANDOFF.md 安全恢复 Session"
+  default_prompt: "使用 $take-over-code-project 读取已有交接并用 Git 和相关源码验证，然后告诉我当前状态与下一步。"

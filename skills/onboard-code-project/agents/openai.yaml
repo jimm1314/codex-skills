@@ -1,0 +1,4 @@
+interface:
+  display_name: "项目 Onboarding（兼容入口）"
+  short_description: "将首次项目入门路由到统一的项目接管流程"
+  default_prompt: "使用 $onboard-code-project 带我从零理解并运行这个项目；如果已有交接则先恢复状态。"

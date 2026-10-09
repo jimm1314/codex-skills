@@ -1,0 +1,4 @@
+interface:
+  display_name: "GitLab 安全协作导师"
+  short_description: "结合 Handoff 与真实 Git 安全诊断、同步和协作"
+  default_prompt: "使用 $guide-gitlab-safely 先读取可用交接并以真实 Git 验证，然后安全完成这次 GitLab 操作。"

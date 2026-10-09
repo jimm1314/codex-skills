@@ -1,0 +1,4 @@
+interface:
+  display_name: "大模型测试用例设计"
+  short_description: "为LLM、RAG、Agent与工具调用系统设计可执行测试用例"
+  default_prompt: "使用 $design-llm-test-cases 为我的大模型系统设计可执行、可评分且可归因的测试用例。"

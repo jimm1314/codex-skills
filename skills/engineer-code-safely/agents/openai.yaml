@@ -1,0 +1,4 @@
+interface:
+  display_name: "安全代码工程与审计"
+  short_description: "基于已有项目上下文实施、验证并审计代码改动"
+  default_prompt: "使用 $engineer-code-safely 按需读取相关源码，安全实现、验证并审计这项代码需求。"

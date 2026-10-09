@@ -1,0 +1,4 @@
+interface:
+  display_name: "SaaS-Bench Runner"
+  short_description: "Safely run and monitor SaaS-Bench evaluations"
+  default_prompt: "Use $saas-bench-runner to preflight, run, monitor, or compare a SaaS-Bench evaluation safely."

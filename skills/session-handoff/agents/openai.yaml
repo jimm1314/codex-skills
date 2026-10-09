@@ -1,0 +1,4 @@
+interface:
+  display_name: "Session 交接助手"
+  short_description: "安全收尾 Session 并维护本地 CODEX_HANDOFF.md 状态快照"
+  default_prompt: "使用 $session-handoff 检查当前项目状态并更新本地 CODEX_HANDOFF.md，然后停止业务开发。"

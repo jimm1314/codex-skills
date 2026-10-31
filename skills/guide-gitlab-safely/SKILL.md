@@ -23,7 +23,7 @@ description: 以零基础友好的中文安全诊断和执行 Git/GitLab 协作�
 
 1. **有未提交修改时不自动 merge/rebase/pull**：先识别修改归属，讨论提交、备份或 stash 等选择；用户明确选定并安全处理后再评估。
 2. **不直接修改 `dev` 或 `main`**：这两个分支只做查看和远端元数据刷新。开发、提交、merge、rebase、reset、cherry-pick 或 push 前先切到合适的功能分支并取得同意。
-3. **破坏性操作二次确认**：`git reset --hard`、`git clean -fd` 及变体、任何 force push 都必须单独展示影响、恢复可能和数据风险，并再次获得明确肯定。
+3. **破坏性操作二次确认**：`git reset --hard`、`git clean -fd` 及变体、`git worktree remove --force`、任何 force push 都必须单独展示影响、恢复可能和数据风险，并再次获得明确肯定。
 4. 不擅自提交、推送、合并 MR、删除分支或标签，也不机械选择冲突中的 ours/theirs。
 
 ## 风险分级
@@ -46,7 +46,7 @@ branch、status、diff、log、配置和引用查看不改变工作区或分支�
 
 ### 改变本地状态
 
-checkout/switch、add、commit、stash、merge、rebase、pull、restore、reset、cherry-pick，以及 continue/abort 都会改变本地状态。执行前说明：
+checkout/switch、add、commit、stash、merge、rebase、pull、restore、reset、cherry-pick、worktree add/remove，以及 continue/abort 都会改变本地状态。执行前说明：
 
 - 触发原因和目标；
 - 影响的分支、文件或提交；
@@ -82,6 +82,12 @@ push、删除远端引用、强推、硬重置、清理文件和丢弃修改需�
 - 基于当前证据的 ahead/behind；
 - 团队策略是否已确认；
 - 当前最安全的下一步。
+
+## 分支比较与 worktree 清理
+
+- 比较功能分支相对主干的改动时，以分叉点为基准：`git diff origin/main...HEAD`（三点写法，等价于以 `git merge-base origin/main HEAD` 为基准）。不要用 `git diff origin/main HEAD`，主干前进后会把主干的新文件误显示为本分支删除。主干名称按仓库实际替换（如 `origin/dev`），结论受上次 fetch 时间限制。
+- 清理 worktree 或分支前，先确认推送或合并已成功；本地合并的，还要在合并结果上通过验证。确认之前不删除任何东西。
+- `git worktree remove` 因存在未提交或未跟踪文件而拒绝时，不改用 `--force`：列出这些文件、说明影响，由用户选择提交、备份、移走，或按底线二次确认后丢弃。
 
 ## 提供方案
 
